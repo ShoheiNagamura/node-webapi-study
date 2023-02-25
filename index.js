@@ -24,3 +24,15 @@ const customers = [
     { title: "橋本", id: 4, },
     { title: "茂木", id: 5 },
 ]
+
+//データを取得できるようにする（CRED)（GET）
+app.get("/api/customers", (req, res) => {
+    res.send(customers);
+})
+
+//お客を指定してデータを取得できる(GET)
+app.get("/api/customers/:id", (req, res) => {
+    //データの中をfindしてリクエストされたidとデータの中のidを照合して一致したデータを変数に返す
+    const customer = customers.find((c) => c.id === parseInt(req.params.id));
+    res.send(customer);
+})
