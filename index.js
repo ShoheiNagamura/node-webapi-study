@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 
+app.use(express.json());
 const PORT = 3001;
 
 
@@ -36,3 +37,15 @@ app.get("/api/customers/:id", (req, res) => {
     const customer = customers.find((c) => c.id === parseInt(req.params.id));
     res.send(customer);
 })
+
+//データを送信（作成）(POST)
+app.post("/api/customers/", (req, res) => {
+    const customer = {
+        title: req.body.title,
+        id: customers.length + 1,
+    };
+    customers.push(customer); //事前に用意したデータに追加する
+    res.send(customers);
+
+})
+
