@@ -49,3 +49,9 @@ app.post("/api/customers/", (req, res) => {
 
 })
 
+//データを更新（PUT）
+app.put("/api/customers/:id", (req, res) => {
+    const customer = customers.find((c) => c.id === parseInt(req.params.id));
+    customer.title = req.body.title;
+    res.send(customer);
+})
