@@ -55,3 +55,11 @@ app.put("/api/customers/:id", (req, res) => {
     customer.title = req.body.title;
     res.send(customer);
 })
+
+//データを削除(DELETE)
+app.delete("/api/customers/:id", (req, res) => {
+    const customer = customers.find((c) => c.id === parseInt(req.params.id));
+    const index = customers.indexOf(customer); //インデックス番号を取得
+    customers.slice(index, 1); //事前に用意したデータに追加する
+    res.send(customer);
+})
