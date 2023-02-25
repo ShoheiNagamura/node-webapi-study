@@ -24,3 +24,8 @@ const customers = [
     { title: "橋本", id: 4, },
     { title: "茂木", id: 5 },
 ]
+
+//データを取得できるようにする（CRED)（GET）
+app.get("/api/customers", (req, res) => {
+    res.send(customers);
+})
